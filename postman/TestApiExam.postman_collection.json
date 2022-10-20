@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "782ae90a-c089-44a3-bbd3-50685b5958be",
+		"name": "TestApiExam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18998372"
+	},
+	"item": [
+		{
+			"name": "Create user 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idUser1\", pm.response.json().id);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status test created\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"julien@cfitech.be\",\r\n  \"password\": \"$2y$13$mZoGJ08J84jiEouxVUWUl.eOn29EiYfbrN1aocE9eOHfHr3mRMVre\",\r\n  \"firstname\": \"Julien\",\r\n  \"lastname\": \"Dunia\",\r\n  \"isVerified\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idUser2\", pm.response.json().id);\r",
+							"pm.environment.set(\"username2\", pm.response.json().userIdentifier);\r",
+							"\r",
+							"pm.test(\"Status test created\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"robert@cfitech.be\",\r\n  \"password\": \"$2y$13$jfQxgICWTJXg1H.SZzrzy.Ma35vkxrx5TjW.xjkdX9bxgw0i84j/W\",\r\n  \"firstname\": \"Robert\",\r\n  \"lastname\": \"Cfitech\",\r\n  \"isVerified\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idUser3\", pm.response.json().id);\r",
+							"\r",
+							"\r",
+							"pm.test(\"Status test created\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"carine@cfitech.be\",\r\n  \"password\": \"$2y$13$kv9rGtBfjsKj8lwQO4ItDOg.DJ15RDWG5nnN/ml0tQisow9HUoL9y\",\r\n  \"firstname\": \"Carine\",\r\n  \"lastname\": \"Cfitech\",\r\n  \"isVerified\": true\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test list users\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user 1 with PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test updated user 1\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\": \"Julien(Modified)\",\r\n    \"lastname\" : \"Dunia(Modified)\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/users/{{idUser1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{idUser1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create video for user 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idLastVideo\", pm.response.json().id);\r",
+							"\r",
+							"pm.test(\"Status test created video for user 1\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Street fighter 6\",\r\n  \"description\": \"Voici une video de street fighter 6\",\r\n  \"videoLink\": \"https://www.youtube.com/embed/d0v_fWaQZww\",\r\n  \"user\": \"api/users/{{idUser1}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/videos",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"videos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create video for user 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Status test created video for user 3\", function(){\r",
+							"    pm.response.to.have.status(201);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Symfony et postman\",\r\n  \"description\": \"Voici une video de symfony et postman\",\r\n  \"videoLink\": \"https://www.youtube.com/embed/d0v_fWaQZww\",\r\n  \"user\": \"api/users/{{idUser3}}\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/videos",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"videos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update video for user 1 with PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test updated video user 1\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/merge-patch+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Postman et Symfony (Modified)\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/api/videos/{{idLastVideo}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"videos",
+						"{{idLastVideo}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"idUser2\", null);\r",
+							"pm.environment.set(\"username2\", null);\r",
+							"pm.test(\"Status test deleted user 2\", function(){\r",
+							"    pm.response.to.have.status(204);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/users/{{idUser2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"users",
+						"{{idUser2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List of videos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test list videos\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/videos",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"videos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
